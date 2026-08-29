@@ -1,0 +1,70 @@
+{
+  "release": "week11_github_compact_v1.2",
+  "generated_date": "2026-08-29",
+  "purpose": "精简Week 11第九、十家公司GitHub成果包并取消二级目录",
+  "week_assignment": "Week 11",
+  "companies": [
+    {
+      "order": 9,
+      "code": "301606",
+      "name": "绿联科技",
+      "role": "扩展性验证"
+    },
+    {
+      "order": 10,
+      "code": "688726",
+      "name": "拉普拉斯",
+      "role": "边界实验"
+    }
+  ],
+  "schema_version": "week8_v1.0_unchanged",
+  "numeric_results_changed": false,
+  "research_judgments_changed": false,
+  "top_level_directories": [
+    "data",
+    "metadata",
+    "reports",
+    "scripts"
+  ],
+  "nested_directories": 0,
+  "retained_outputs": {
+    "reports": 3,
+    "standard_table_csv": 9,
+    "company_standard_json": 2,
+    "integrated_json": 1,
+    "combined_variable_records": 320,
+    "combined_acceptance_checks": 34
+  },
+  "removed_as_duplicate": [
+    "第九家公司单独9张CSV",
+    "第十家公司单独9张CSV",
+    "分开的验收CSV",
+    "分开的复用评估CSV",
+    "重复的两个来源清单"
+  ],
+  "files": [
+    "README.md",
+    "data/company09_ugreen_standard_dataset_v1.0.json",
+    "data/company10_laplace_standard_dataset_v1.1.json",
+    "data/ten_companies_companies.csv",
+    "data/ten_companies_entities.csv",
+    "data/ten_companies_evidence.csv",
+    "data/ten_companies_financing_events.csv",
+    "data/ten_companies_investment_paths.csv",
+    "data/ten_companies_numeric_validation.csv",
+    "data/ten_companies_transaction_parties.csv",
+    "data/ten_companies_transactions.csv",
+    "data/ten_companies_validation_issues.csv",
+    "data/ten_company_integrated_dataset_v1.1.json",
+    "data/ten_company_variable_long_v1.1.csv",
+    "data/two_company_acceptance_checks.csv",
+    "data/two_company_reuse_assessment.csv",
+    "data/two_company_validation_summary.csv",
+    "metadata/source_manifest.json",
+    "reports/week11_company09_ugreen_extension_test_v1.1.xlsx",
+    "reports/week11_company10_laplace_boundary_test_v1.1.xlsx",
+    "reports/week11_two_company_extension_validation_summary_v1.1.pdf",
+    "scripts/verify_release.py",
+    "metadata/release_manifest.json"
+  ]
+}

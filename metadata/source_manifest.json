@@ -1,0 +1,74 @@
+{
+  "release": "week11_github_compact_v1.2",
+  "company09_ugreen": {
+    "company_id": "301606",
+    "company_name": "绿联科技",
+    "document": "深圳市绿联科技股份有限公司首次公开发行股票并在创业板上市招股说明书",
+    "signed_date": "2024-07-19",
+    "pdf_pages": 573,
+    "source_url": "https://file.finance.sina.com.cn/211.154.219.97:9494/MRGG/CNSESZ_STOCK/2024/2024-7/2024-07-19/10336146.PDF",
+    "source_sha256": "870784fb7ef5f4cc7f0a6e5523ce528696e4d38f4e3a815dc672bf42f6d27ad7",
+    "primary_pdf_pages": [
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      77,
+      80,
+      81,
+      82,
+      83,
+      84,
+      85
+    ],
+    "primary_document_pages": [
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      76,
+      79,
+      80,
+      81,
+      82,
+      83,
+      84
+    ],
+    "source_policy": "网页仅用于定位正式PDF；事实、金额、主体身份和页码均以正式招股说明书为准。"
+  },
+  "company10_laplace": {
+    "company_id": "688726",
+    "company_name": "拉普拉斯新能源科技股份有限公司",
+    "formal_prospectus": {
+      "date": "2024-10-24",
+      "url": "https://www.sse.com.cn/disclosure/listedinfo/announcement/c/new/2024-10-24/688726_20241024_RX0S.pdf",
+      "publisher": "上海证券交易所",
+      "use": "正式版本确认与交叉核对"
+    },
+    "parsed_application_draft": {
+      "date": "2023-06-19",
+      "file": "688726_laplace_ipo_application_20230619.pdf",
+      "pages": 435,
+      "sha256": "4a273d9e46527533533dc441adab5eef378358273b7ff03aa9b4b4e0278743dd",
+      "url": "https://file.finance.sina.com.cn/211.154.219.97%3A9494/MRGG/CNSESH_STOCK/2023/2023-6/2023-06-19/9299534.PDF",
+      "key_document_pages": [
+        33,
+        34,
+        37,
+        38,
+        39,
+        40,
+        119,
+        120
+      ],
+      "use": "逐笔股本变动、交易参与方、金额及基金备案表重建"
+    },
+    "version_boundary": "2020-2022股本变动表经正式版检索结果交叉核对；申报稿作为可全文解析底稿，不替代正式版法律文件。"
+  }
+}
