@@ -1,0 +1,321 @@
+﻿company_id,company_name,variable_id,variable_name_cn,construct,priority,unit,value,availability_status,calculation_logic,warning,evidence_boundary,source_release
+301563,云汉芯城,CV001,上市前直接股权融资发生标记,融资经历,A核心,0/1,1,VALID,financing_round_count=7，据此生成二元标记。,,companies:301563,Week9_v1.0_frozen
+301563,云汉芯城,CV002,上市前直接股权融资轮数,融资频度,A核心,轮,7,VALID,公司冻结轮次=7；事件层TRUE计数=7。,,companies:301563; CE-002-02; CE-004; CE-005; CE-007; CE-012; CE-013-01; CE-010-01,Week9_v1.0_frozen
+301563,云汉芯城,CV003,可核验融资金额下限,融资规模,A核心,万元人民币,27120,VALID,读取公司层冻结金额；状态=KNOWN_LOWER_BOUND。,,companies:301563,Week9_v1.0_frozen
+301563,云汉芯城,CV004,融资金额下限对数,融资规模,B扩展,ln(1+万元),10.208063614530875,VALID,LN(1+公司层融资金额下限)。,,companies:301563,Week9_v1.0_frozen
+301563,云汉芯城,CV005,已知金额轮次均值,单轮融资规模,A核心,万元人民币/已知轮,9000,VALID,基于3个非null融资轮金额计算已知轮次金额均值。,,CE-012; CE-013-01; CE-010-01,Week9_v1.0_frozen
+301563,云汉芯城,CV006,已知金额轮次中位数,单轮融资规模,B扩展,万元人民币/已知轮,7000,VALID,基于3个非null融资轮金额计算已知轮次金额中位数。,,CE-012; CE-013-01; CE-010-01,Week9_v1.0_frozen
+301563,云汉芯城,CV007,最大已知单轮融资金额,融资峰值,B扩展,万元人民币,15000,VALID,基于3个非null融资轮金额计算最大已知轮次金额。,,CE-012; CE-013-01; CE-010-01,Week9_v1.0_frozen
+301563,云汉芯城,CV008,最大已知轮金额占比,融资集中度,B扩展,0–1,0.5555555555555556,VALID,最大已知轮金额/已知事件锚点金额合计。,,CE-012; CE-013-01; CE-010-01,Week9_v1.0_frozen
+301563,云汉芯城,CV009,融资时间跨度,融资节奏,A核心,月,129,VALID,使用6个可用年月计算最晚减最早。,,CE-002-02; CE-004; CE-005; CE-007; CE-012; CE-013-01,Week9_v1.0_frozen
+301563,云汉芯城,CV010,融资轮次间隔中位数,融资节奏,B扩展,月,7,VALID,对5个相邻月份差取中位数。,,CE-002-02; CE-004; CE-005; CE-007; CE-012; CE-013-01,Week9_v1.0_frozen
+301563,云汉芯城,CV011,确认PE/VC参与标记,PEVC参与,A核心,0/1,1,VALID,confirmed_pevc_legal_entity_count=12。,,companies:301563,Week9_v1.0_frozen
+301563,云汉芯城,CV012,确认PE/VC法律主体数,PEVC参与,A核心,个,12,VALID,读取公司层冻结确认PE/VC法律主体数。,,companies:301563,Week9_v1.0_frozen
+301563,云汉芯城,CV013,确认PE/VC占直接主体比重,PEVC参与,B扩展,0–1,0.34285714285714286,VALID,确认PE/VC法律主体数/直接参与法律主体数。,,companies:301563,Week9_v1.0_frozen
+301563,云汉芯城,CV014,确认PE/VC参与融资轮数,PEVC参与深度,B扩展,轮,5,VALID,连接融资轮→交易→party→PEVC_CONFIRMED，并按event_id去重。,,TRX-301563-INC-002-P02; TRX-301563-INC-002-P03; TRX-301563-INC-003-P02; TRX-301563-INC-003-P03; TRX-301563-INC-005-P05; TRX-301563-INC-005-P06; TRX-301563-INC-006-P01; TRX-301563-INC-006-P03; TRX-301563-INC-006-P05; TRX-301563-INC-006-P06; TRX-301563-INC-009-P02,Week9_v1.0_frozen
+301563,云汉芯城,CV015,首次确认PE/VC进入日期,PEVC进入时点,A核心,日期或年月,2014-08,VALID,在确认PE/VC路径中取最早可用日期，精度=MONTH。,,EDGE-003,Week9_v1.0_frozen
+301563,云汉芯城,CV016,首次确认PE/VC进入年份,PEVC进入时点,B扩展,年,2014,VALID,从首次进入日期提取年份。,,EDGE-003,Week9_v1.0_frozen
+301563,云汉芯城,CV017,首次确认PE/VC融资轮位置,PEVC进入时点,B扩展,0–1,0.2857142857142857,VALID,首次确认PE/VC融资轮序位=2，总轮数=7。,,TRX-301563-INC-002-P02; TRX-301563-INC-002-P03; TRX-301563-INC-003-P02; TRX-301563-INC-003-P03; TRX-301563-INC-005-P05; TRX-301563-INC-005-P06; TRX-301563-INC-006-P01; TRX-301563-INC-006-P03; TRX-301563-INC-006-P05; TRX-301563-INC-006-P06; TRX-301563-INC-009-P02,Week9_v1.0_frozen
+301563,云汉芯城,CV018,确认PE/VC间接路径标记,投资路径复杂度,B扩展,0/1,1,VALID,检查确认路径中与PEVC_CONFIRMED相关的INDIRECT边。,,EDGE-056; EDGE-058; EDGE-059; EDGE-060; EDGE-061; EDGE-062; EDGE-063; EDGE-064; EDGE-065,Week9_v1.0_frozen
+301563,云汉芯城,CV019,确认PE/VC进入方式多样性,PEVC进入方式,B扩展,种,2,VALID,"确认PE/VC路径非空进入方式=['CAPITAL_INCREASE_ENTRY', 'TRANSFER_ENTRY']。",,EDGE-024; EDGE-036; EDGE-037; EDGE-039; EDGE-040; EDGE-045; EDGE-046; EDGE-047; EDGE-049; EDGE-051; EDGE-052; EDGE-055,Week9_v1.0_frozen
+301563,云汉芯城,CV020,直接参与法律主体数,参与结构规模,A核心,个,35,VALID,读取公司层冻结直接参与法律主体数。,,companies:301563,Week9_v1.0_frozen
+301563,云汉芯城,CV021,融资投资方法律主体数,融资参与广度,B扩展,个,19,VALID,纳入23条通过事件、party和证据闸门的映射记录，按canonical_entity_id优先去重为19个主体。,冻结角色SUBSCRIBER在Week9研究层映射为INVESTOR；仅用于CV021/CV022，不改写标准角色。,MAP-301563-CV021-001; MAP-301563-CV021-002; MAP-301563-CV021-003; MAP-301563-CV021-004; MAP-301563-CV021-005; MAP-301563-CV021-006; MAP-301563-CV021-007; MAP-301563-CV021-008; MAP-301563-CV021-009; MAP-301563-CV021-010; MAP-301563-CV021-011; MAP-301563-CV021-012; MAP-301563-CV021-013; MAP-301563-CV021-014; MAP-301563-CV021-015; MAP-301563-CV021-016; MAP-301563-CV021-017; MAP-301563-CV021-018; MAP-301563-CV021-019; MAP-301563-CV021-020; MAP-301563-CV021-021; MAP-301563-CV021-022; MAP-301563-CV021-023,Week9_v1.0_frozen
+301563,云汉芯城,CV022,每轮融资投资方密度,融资参与密度,B扩展,个/轮,2.7142857142857144,VALID,CV021修复值19/冻结融资轮数7。,冻结角色SUBSCRIBER在Week9研究层映射为INVESTOR；仅用于CV021/CV022，不改写标准角色。,MAP-301563-CV021-001; MAP-301563-CV021-002; MAP-301563-CV021-003; MAP-301563-CV021-004; MAP-301563-CV021-005; MAP-301563-CV021-006; MAP-301563-CV021-007; MAP-301563-CV021-008; MAP-301563-CV021-009; MAP-301563-CV021-010; MAP-301563-CV021-011; MAP-301563-CV021-012; MAP-301563-CV021-013; MAP-301563-CV021-014; MAP-301563-CV021-015; MAP-301563-CV021-016; MAP-301563-CV021-017; MAP-301563-CV021-018; MAP-301563-CV021-019; MAP-301563-CV021-020; MAP-301563-CV021-021; MAP-301563-CV021-022; MAP-301563-CV021-023,Week9_v1.0_frozen
+301563,云汉芯城,CV023,融资方式多样性,融资机制,B扩展,种,1,VALID,融资交易组成标准化方式=['CAPITAL_INCREASE']。,,TRX-301563-INC-001; TRX-301563-INC-002; TRX-301563-INC-003; TRX-301563-INC-005; TRX-301563-INC-006; TRX-301563-INC-007; TRX-301563-INC-008; TRX-301563-INC-009,Week9_v1.0_frozen
+301563,云汉芯城,CV024,股权转让交易数,二级股权流动,A核心,笔,20,VALID,按EQUITY_TRANSFER交易记录计数。,,TRX-301563-TR-LOT-001; TRX-301563-TR-LOT-002; TRX-301563-TR-LOT-003; TRX-301563-TR-LOT-004; TRX-301563-TR-LOT-005; TRX-301563-TR-LOT-006; TRX-301563-TR-LOT-007; TRX-301563-TR-LOT-008; TRX-301563-TR-LOT-009; TRX-301563-TR-LOT-010; TRX-301563-TR-LOT-011; TRX-301563-TR-LOT-012; TRX-301563-TR-LOT-013; TRX-301563-TR-LOT-014; TRX-301563-TR-LOT-015; TRX-301563-TR-LOT-016; TRX-301563-TR-LOT-017; TRX-301563-TR-LOT-018; TRX-301563-TR-LOT-019; TRX-301563-TR-LOT-020,Week9_v1.0_frozen
+301563,云汉芯城,CV025,可核验股权转让对价下限,二级股权流动,A核心,万元人民币,13018.1954,VALID,读取公司层冻结转让对价下限；状态=KNOWN_LOWER_BOUND。,,companies:301563,Week9_v1.0_frozen
+301563,云汉芯城,CV026,转让对价与融资金额比,二级股权流动,B扩展,0–∞,0.48002195427728617,VALID,转让对价下限/融资金额下限；两类金额未相加。,,companies:301563,Week9_v1.0_frozen
+301563,云汉芯城,CV027,金额已知融资轮数,数据可用性,Q质量,轮,3,VALID,融资轮中金额非null记录数。,,CE-012; CE-013-01; CE-010-01,Week9_v1.0_frozen
+301563,云汉芯城,CV028,融资轮金额覆盖率,数据可用性,Q质量,0–1,0.42857142857142855,VALID,金额非null融资轮数/融资轮总数。,,CE-002-02; CE-004; CE-005; CE-007; CE-012; CE-013-01; CE-010-01,Week9_v1.0_frozen
+301563,云汉芯城,CV029,融资轮日期覆盖率,数据可用性,Q质量,0–1,0.8571428571428571,VALID,DAY或MONTH精度融资轮数/融资轮总数。,,CE-002-02; CE-004; CE-005; CE-007; CE-012; CE-013-01; CE-010-01,Week9_v1.0_frozen
+301563,云汉芯城,CV030,计算型轮次金额占比,数值来源结构,Q质量,0–1,0.6666666666666666,VALID,CALCULATED已知金额轮数/已知金额轮数。,,CE-012; CE-013-01; CE-010-01,Week9_v1.0_frozen
+301563,云汉芯城,CV031,每轮融资证据记录数,证据密度,Q质量,条/轮,2.857142857142857,VALID,关联融资轮的去重evidence_id数/融资轮数。,,CE-004-E01; CE-004-E02; CE-005-E01; CE-005-E02; CE-007-E01; CE-007-E02; CE-012-E01; CE-012-E02; CE-012-E03; CE-012-E04; EVD-003; EVD-006; EVD-009; EVD-010; EVD-013; EVD-014; EVD-015; EVD-016; EVD-017; EVD-018,Week9_v1.0_frozen
+301563,云汉芯城,CV032,公司级披露限制标记,披露边界,Q质量,0/1,1,VALID,FINAL_APPROVED公司记录中检查disclosure_limitation是否非空。,,companies:301563,Week9_v1.0_frozen
+001282,三联锻造,CV001,上市前直接股权融资发生标记,融资经历,A核心,0/1,1,VALID,financing_round_count=1，据此生成二元标记。,,companies:001282,Week9_v1.0_frozen
+001282,三联锻造,CV002,上市前直接股权融资轮数,融资频度,A核心,轮,1,VALID,公司冻结轮次=1；事件层TRUE计数=1。,,companies:001282; EVT-001282-0003,Week9_v1.0_frozen
+001282,三联锻造,CV003,可核验融资金额下限,融资规模,A核心,万元人民币,1566,VALID,读取公司层冻结金额；状态=DISCLOSED_COMPLETE。,,companies:001282,Week9_v1.0_frozen
+001282,三联锻造,CV004,融资金额下限对数,融资规模,B扩展,ln(1+万元),7.356918242356021,VALID,LN(1+公司层融资金额下限)。,,companies:001282,Week9_v1.0_frozen
+001282,三联锻造,CV005,已知金额轮次均值,单轮融资规模,A核心,万元人民币/已知轮,1566,VALID,基于1个非null融资轮金额计算已知轮次金额均值。,,EVT-001282-0003,Week9_v1.0_frozen
+001282,三联锻造,CV006,已知金额轮次中位数,单轮融资规模,B扩展,万元人民币/已知轮,1566,VALID,基于1个非null融资轮金额计算已知轮次金额中位数。,,EVT-001282-0003,Week9_v1.0_frozen
+001282,三联锻造,CV007,最大已知单轮融资金额,融资峰值,B扩展,万元人民币,1566,VALID,基于1个非null融资轮金额计算最大已知轮次金额。,,EVT-001282-0003,Week9_v1.0_frozen
+001282,三联锻造,CV008,最大已知轮金额占比,融资集中度,B扩展,0–1,1,VALID,最大已知轮金额/已知事件锚点金额合计。,,EVT-001282-0003,Week9_v1.0_frozen
+001282,三联锻造,CV009,融资时间跨度,融资节奏,A核心,月,,STRUCTURAL_NA,融资时间跨度不适用。,,EVT-001282-0003,Week9_v1.0_frozen
+001282,三联锻造,CV010,融资轮次间隔中位数,融资节奏,B扩展,月,,STRUCTURAL_NA,融资间隔中位数不适用。,,EVT-001282-0003,Week9_v1.0_frozen
+001282,三联锻造,CV011,确认PE/VC参与标记,PEVC参与,A核心,0/1,0,VALID,confirmed_pevc_legal_entity_count=0。,,companies:001282,Week9_v1.0_frozen
+001282,三联锻造,CV012,确认PE/VC法律主体数,PEVC参与,A核心,个,0,VALID,读取公司层冻结确认PE/VC法律主体数。,,companies:001282,Week9_v1.0_frozen
+001282,三联锻造,CV013,确认PE/VC占直接主体比重,PEVC参与,B扩展,0–1,0,VALID,确认PE/VC法律主体数/直接参与法律主体数。,,companies:001282,Week9_v1.0_frozen
+001282,三联锻造,CV014,确认PE/VC参与融资轮数,PEVC参与深度,B扩展,轮,0,VALID,公司层确认PE/VC数为0，因此确认PE/VC参与融资轮数为0。,,companies:001282,Week9_v1.0_frozen
+001282,三联锻造,CV015,首次确认PE/VC进入日期,PEVC进入时点,A核心,日期或年月,,STRUCTURAL_NA,首次确认PE/VC进入日期不适用。,,companies:001282,Week9_v1.0_frozen
+001282,三联锻造,CV016,首次确认PE/VC进入年份,PEVC进入时点,B扩展,年,,STRUCTURAL_NA,首次确认PE/VC进入年份不适用。,,companies:001282,Week9_v1.0_frozen
+001282,三联锻造,CV017,首次确认PE/VC融资轮位置,PEVC进入时点,B扩展,0–1,,STRUCTURAL_NA,首次确认PE/VC融资轮位置不适用。,,companies:001282,Week9_v1.0_frozen
+001282,三联锻造,CV018,确认PE/VC间接路径标记,投资路径复杂度,B扩展,0/1,0,VALID,公司层确认PE/VC数为0，因此不存在确认PE/VC间接路径。,,companies:001282,Week9_v1.0_frozen
+001282,三联锻造,CV019,确认PE/VC进入方式多样性,PEVC进入方式,B扩展,种,0,VALID,公司层确认PE/VC数为0，因此进入方式种类为0。,,companies:001282,Week9_v1.0_frozen
+001282,三联锻造,CV020,直接参与法律主体数,参与结构规模,A核心,个,1,VALID,读取公司层冻结直接参与法律主体数。,,companies:001282,Week9_v1.0_frozen
+001282,三联锻造,CV021,融资投资方法律主体数,融资参与广度,B扩展,个,1,VALID,融资轮相关交易中筛选INVESTOR，canonical_entity_id优先、否则entity_id去重。,稳定ID足以计数，但部分PTY名称及PTY↔INV crosswalk未恢复，不能做名称级网络解释。,TRX-001282-0003-01-P01,Week9_v1.0_frozen
+001282,三联锻造,CV022,每轮融资投资方密度,融资参与密度,B扩展,个/轮,1,VALID,融资投资方法律主体数/融资轮数。,稳定ID足以计数，但部分PTY名称及PTY↔INV crosswalk未恢复，不能做名称级网络解释。,TRX-001282-0003-01-P01,Week9_v1.0_frozen
+001282,三联锻造,CV023,融资方式多样性,融资机制,B扩展,种,1,VALID,融资交易组成标准化方式=['CAPITAL_INCREASE']。,,TRX-001282-0003-01,Week9_v1.0_frozen
+001282,三联锻造,CV024,股权转让交易数,二级股权流动,A核心,笔,0,VALID,按EQUITY_TRANSFER交易记录计数。,,,Week9_v1.0_frozen
+001282,三联锻造,CV025,可核验股权转让对价下限,二级股权流动,A核心,万元人民币,,STRUCTURAL_NA,不将不适用金额补0。,,companies:001282,Week9_v1.0_frozen
+001282,三联锻造,CV026,转让对价与融资金额比,二级股权流动,B扩展,0–∞,,STRUCTURAL_NA,不将不适用比率补0。,,companies:001282,Week9_v1.0_frozen
+001282,三联锻造,CV027,金额已知融资轮数,数据可用性,Q质量,轮,1,VALID,融资轮中金额非null记录数。,,EVT-001282-0003,Week9_v1.0_frozen
+001282,三联锻造,CV028,融资轮金额覆盖率,数据可用性,Q质量,0–1,1,VALID,金额非null融资轮数/融资轮总数。,,EVT-001282-0003,Week9_v1.0_frozen
+001282,三联锻造,CV029,融资轮日期覆盖率,数据可用性,Q质量,0–1,1,VALID,DAY或MONTH精度融资轮数/融资轮总数。,,EVT-001282-0003,Week9_v1.0_frozen
+001282,三联锻造,CV030,计算型轮次金额占比,数值来源结构,Q质量,0–1,1,VALID,CALCULATED已知金额轮数/已知金额轮数。,,EVT-001282-0003,Week9_v1.0_frozen
+001282,三联锻造,CV031,每轮融资证据记录数,证据密度,Q质量,条/轮,2,VALID,关联融资轮的去重evidence_id数/融资轮数。,,EVD-001282-0004-01; EVD-001282-0004-02,Week9_v1.0_frozen
+001282,三联锻造,CV032,公司级披露限制标记,披露边界,Q质量,0/1,1,VALID,FINAL_APPROVED公司记录中检查disclosure_limitation是否非空。,,companies:001282,Week9_v1.0_frozen
+301581,黄山谷捷,CV001,上市前直接股权融资发生标记,融资经历,A核心,0/1,1,VALID,financing_round_count=2，据此生成二元标记。,,companies:301581,Week9_v1.0_frozen
+301581,黄山谷捷,CV002,上市前直接股权融资轮数,融资频度,A核心,轮,2,VALID,公司冻结轮次=2；事件层TRUE计数=2。,,companies:301581; EVT-301581-0004; EVT-301581-0005,Week9_v1.0_frozen
+301581,黄山谷捷,CV003,可核验融资金额下限,融资规模,A核心,万元人民币,13655.098274,VALID,读取公司层冻结金额；状态=DISCLOSED_COMPLETE。,,companies:301581,Week9_v1.0_frozen
+301581,黄山谷捷,CV004,融资金额下限对数,融资规模,B扩展,ln(1+万元),9.521941460845571,VALID,LN(1+公司层融资金额下限)。,,companies:301581,Week9_v1.0_frozen
+301581,黄山谷捷,CV005,已知金额轮次均值,单轮融资规模,A核心,万元人民币/已知轮,6827.549137,VALID,基于2个非null融资轮金额计算已知轮次金额均值。,,EVT-301581-0004; EVT-301581-0005,Week9_v1.0_frozen
+301581,黄山谷捷,CV006,已知金额轮次中位数,单轮融资规模,B扩展,万元人民币/已知轮,6827.549137,VALID,基于2个非null融资轮金额计算已知轮次金额中位数。,,EVT-301581-0004; EVT-301581-0005,Week9_v1.0_frozen
+301581,黄山谷捷,CV007,最大已知单轮融资金额,融资峰值,B扩展,万元人民币,11530.285394,VALID,基于2个非null融资轮金额计算最大已知轮次金额。,,EVT-301581-0004; EVT-301581-0005,Week9_v1.0_frozen
+301581,黄山谷捷,CV008,最大已知轮金额占比,融资集中度,B扩展,0–1,0.8443941715127931,VALID,最大已知轮金额/已知事件锚点金额合计。,,EVT-301581-0004; EVT-301581-0005,Week9_v1.0_frozen
+301581,黄山谷捷,CV009,融资时间跨度,融资节奏,A核心,月,6,VALID,使用2个可用年月计算最晚减最早。,,EVT-301581-0004; EVT-301581-0005,Week9_v1.0_frozen
+301581,黄山谷捷,CV010,融资轮次间隔中位数,融资节奏,B扩展,月,6,VALID,对1个相邻月份差取中位数。,,EVT-301581-0004; EVT-301581-0005,Week9_v1.0_frozen
+301581,黄山谷捷,CV011,确认PE/VC参与标记,PEVC参与,A核心,0/1,0,VALID,confirmed_pevc_legal_entity_count=0。,,companies:301581,Week9_v1.0_frozen
+301581,黄山谷捷,CV012,确认PE/VC法律主体数,PEVC参与,A核心,个,0,VALID,读取公司层冻结确认PE/VC法律主体数。,,companies:301581,Week9_v1.0_frozen
+301581,黄山谷捷,CV013,确认PE/VC占直接主体比重,PEVC参与,B扩展,0–1,0,VALID,确认PE/VC法律主体数/直接参与法律主体数。,,companies:301581,Week9_v1.0_frozen
+301581,黄山谷捷,CV014,确认PE/VC参与融资轮数,PEVC参与深度,B扩展,轮,0,VALID,公司层确认PE/VC数为0，因此确认PE/VC参与融资轮数为0。,,companies:301581,Week9_v1.0_frozen
+301581,黄山谷捷,CV015,首次确认PE/VC进入日期,PEVC进入时点,A核心,日期或年月,,STRUCTURAL_NA,首次确认PE/VC进入日期不适用。,,companies:301581,Week9_v1.0_frozen
+301581,黄山谷捷,CV016,首次确认PE/VC进入年份,PEVC进入时点,B扩展,年,,STRUCTURAL_NA,首次确认PE/VC进入年份不适用。,,companies:301581,Week9_v1.0_frozen
+301581,黄山谷捷,CV017,首次确认PE/VC融资轮位置,PEVC进入时点,B扩展,0–1,,STRUCTURAL_NA,首次确认PE/VC融资轮位置不适用。,,companies:301581,Week9_v1.0_frozen
+301581,黄山谷捷,CV018,确认PE/VC间接路径标记,投资路径复杂度,B扩展,0/1,0,VALID,公司层确认PE/VC数为0，因此不存在确认PE/VC间接路径。,,companies:301581,Week9_v1.0_frozen
+301581,黄山谷捷,CV019,确认PE/VC进入方式多样性,PEVC进入方式,B扩展,种,0,VALID,公司层确认PE/VC数为0，因此进入方式种类为0。,,companies:301581,Week9_v1.0_frozen
+301581,黄山谷捷,CV020,直接参与法律主体数,参与结构规模,A核心,个,6,VALID,读取公司层冻结直接参与法律主体数。,,companies:301581,Week9_v1.0_frozen
+301581,黄山谷捷,CV021,融资投资方法律主体数,融资参与广度,B扩展,个,3,VALID,两轮融资的3条INVESTOR bridge按补充entity_id去重。,3个主体名称按招股书披露简称保留；5个无名称PTY未强行映射。,SUP-PTY-301581-0004-01-P01; SUP-PTY-301581-0004-01-P02; SUP-PTY-301581-0005-01-P01,Week9_v1.0_frozen
+301581,黄山谷捷,CV022,每轮融资投资方密度,融资参与密度,B扩展,个/轮,1.5,VALID,CV021修复值3/冻结融资轮数2。,主体简称足以计数，不足以进行完整法定名称网络分析。,SUP-PTY-301581-0004-01-P01; SUP-PTY-301581-0004-01-P02; SUP-PTY-301581-0005-01-P01,Week9_v1.0_frozen
+301581,黄山谷捷,CV023,融资方式多样性,融资机制,B扩展,种,1,VALID,融资交易组成标准化方式=['CAPITAL_INCREASE']。,,TRX-301581-0004-01; TRX-301581-0005-01,Week9_v1.0_frozen
+301581,黄山谷捷,CV024,股权转让交易数,二级股权流动,A核心,笔,1,VALID,按EQUITY_TRANSFER交易记录计数。,,TRX-301581-0003-01,Week9_v1.0_frozen
+301581,黄山谷捷,CV025,可核验股权转让对价下限,二级股权流动,A核心,万元人民币,0,VALID,读取公司层冻结转让对价下限；状态=DISCLOSED_COMPLETE。,,companies:301581,Week9_v1.0_frozen
+301581,黄山谷捷,CV026,转让对价与融资金额比,二级股权流动,B扩展,0–∞,0,VALID,转让对价下限/融资金额下限；两类金额未相加。,,companies:301581,Week9_v1.0_frozen
+301581,黄山谷捷,CV027,金额已知融资轮数,数据可用性,Q质量,轮,2,VALID,融资轮中金额非null记录数。,,EVT-301581-0004; EVT-301581-0005,Week9_v1.0_frozen
+301581,黄山谷捷,CV028,融资轮金额覆盖率,数据可用性,Q质量,0–1,1,VALID,金额非null融资轮数/融资轮总数。,,EVT-301581-0004; EVT-301581-0005,Week9_v1.0_frozen
+301581,黄山谷捷,CV029,融资轮日期覆盖率,数据可用性,Q质量,0–1,1,VALID,DAY或MONTH精度融资轮数/融资轮总数。,,EVT-301581-0004; EVT-301581-0005,Week9_v1.0_frozen
+301581,黄山谷捷,CV030,计算型轮次金额占比,数值来源结构,Q质量,0–1,1,VALID,CALCULATED已知金额轮数/已知金额轮数。,,EVT-301581-0004; EVT-301581-0005,Week9_v1.0_frozen
+301581,黄山谷捷,CV031,每轮融资证据记录数,证据密度,Q质量,条/轮,1,VALID,关联融资轮的去重evidence_id数/融资轮数。,,EVD-301581-0004-01; EVD-301581-0005-01,Week9_v1.0_frozen
+301581,黄山谷捷,CV032,公司级披露限制标记,披露边界,Q质量,0/1,0,VALID,FINAL_APPROVED公司记录中检查disclosure_limitation是否非空。,,companies:301581,Week9_v1.0_frozen
+603418,友升股份,CV001,上市前直接股权融资发生标记,融资经历,A核心,0/1,1,VALID,financing_round_count=2，据此生成二元标记。,,companies:603418,Week9_v1.0_frozen
+603418,友升股份,CV002,上市前直接股权融资轮数,融资频度,A核心,轮,2,VALID,公司冻结轮次=2；事件层TRUE计数=2。,,companies:603418; EVT-603418-0003; EVT-603418-0004,Week9_v1.0_frozen
+603418,友升股份,CV003,可核验融资金额下限,融资规模,A核心,万元人民币,48500,VALID,读取公司层冻结金额；状态=DISCLOSED_COMPLETE。,,companies:603418,Week9_v1.0_frozen
+603418,友升股份,CV004,融资金额下限对数,融资规模,B扩展,ln(1+万元),10.789339695269716,VALID,LN(1+公司层融资金额下限)。,,companies:603418,Week9_v1.0_frozen
+603418,友升股份,CV005,已知金额轮次均值,单轮融资规模,A核心,万元人民币/已知轮,24250,VALID,基于2个非null融资轮金额计算已知轮次金额均值。,,EVT-603418-0003; EVT-603418-0004,Week9_v1.0_frozen
+603418,友升股份,CV006,已知金额轮次中位数,单轮融资规模,B扩展,万元人民币/已知轮,24250,VALID,基于2个非null融资轮金额计算已知轮次金额中位数。,,EVT-603418-0003; EVT-603418-0004,Week9_v1.0_frozen
+603418,友升股份,CV007,最大已知单轮融资金额,融资峰值,B扩展,万元人民币,37000,VALID,基于2个非null融资轮金额计算最大已知轮次金额。,,EVT-603418-0003; EVT-603418-0004,Week9_v1.0_frozen
+603418,友升股份,CV008,最大已知轮金额占比,融资集中度,B扩展,0–1,0.7628865979381443,VALID,最大已知轮金额/已知事件锚点金额合计。,,EVT-603418-0003; EVT-603418-0004,Week9_v1.0_frozen
+603418,友升股份,CV009,融资时间跨度,融资节奏,A核心,月,27,VALID,使用2个可用年月计算最晚减最早。,,EVT-603418-0003; EVT-603418-0004,Week9_v1.0_frozen
+603418,友升股份,CV010,融资轮次间隔中位数,融资节奏,B扩展,月,27,VALID,对1个相邻月份差取中位数。,,EVT-603418-0003; EVT-603418-0004,Week9_v1.0_frozen
+603418,友升股份,CV011,确认PE/VC参与标记,PEVC参与,A核心,0/1,1,VALID,confirmed_pevc_legal_entity_count=2。,,companies:603418,Week9_v1.0_frozen
+603418,友升股份,CV012,确认PE/VC法律主体数,PEVC参与,A核心,个,2,VALID,读取公司层冻结确认PE/VC法律主体数。,,companies:603418,Week9_v1.0_frozen
+603418,友升股份,CV013,确认PE/VC占直接主体比重,PEVC参与,B扩展,0–1,0.15384615384615385,VALID,确认PE/VC法律主体数/直接参与法律主体数。,,companies:603418,Week9_v1.0_frozen
+603418,友升股份,CV014,确认PE/VC参与融资轮数,PEVC参与深度,B扩展,轮,1,VALID,按补充PE/VC party bridge关联融资轮并按event_id去重。,以确认路径和原文认购关系补充party bridge；匿名PTY未强行映射。,SUP-PARTY-BRIDGE-603418-001; SUP-PARTY-BRIDGE-603418-002,Week9_v1.0_frozen
+603418,友升股份,CV015,首次确认PE/VC进入日期,PEVC进入时点,A核心,日期或年月,2020-09,VALID,在确认PE/VC路径中取最早可用日期，精度=MONTH。,,PATH-603418-00006-E01,Week9_v1.0_frozen
+603418,友升股份,CV016,首次确认PE/VC进入年份,PEVC进入时点,B扩展,年,2020,VALID,从首次进入日期提取年份。,,PATH-603418-00006-E01,Week9_v1.0_frozen
+603418,友升股份,CV017,首次确认PE/VC融资轮位置,PEVC进入时点,B扩展,0–1,0.5,VALID,首次确认PE/VC融资轮序位1/冻结融资轮数2。,以确认路径和原文认购关系补充party bridge；匿名PTY未强行映射。,SUP-PARTY-BRIDGE-603418-001; SUP-PARTY-BRIDGE-603418-002,Week9_v1.0_frozen
+603418,友升股份,CV018,确认PE/VC间接路径标记,投资路径复杂度,B扩展,0/1,0,VALID,检查确认路径中与PEVC_CONFIRMED相关的INDIRECT边。,,PATH-603418-00006-E01; PATH-603418-00007-E01,Week9_v1.0_frozen
+603418,友升股份,CV019,确认PE/VC进入方式多样性,PEVC进入方式,B扩展,种,1,VALID,确认PE/VC路径非空进入方式=['CAPITAL_INCREASE_ENTRY']。,,PATH-603418-00006-E01; PATH-603418-00007-E01,Week9_v1.0_frozen
+603418,友升股份,CV020,直接参与法律主体数,参与结构规模,A核心,个,13,VALID,读取公司层冻结直接参与法律主体数。,,companies:603418,Week9_v1.0_frozen
+603418,友升股份,CV021,融资投资方法律主体数,融资参与广度,B扩展,个,2,VALID,融资轮相关交易中筛选INVESTOR，canonical_entity_id优先、否则entity_id去重。,稳定ID足以计数，但部分PTY名称及PTY↔INV crosswalk未恢复，不能做名称级网络解释。,TRX-603418-0004-01-P01; TRX-603418-0004-01-P02,Week9_v1.0_frozen
+603418,友升股份,CV022,每轮融资投资方密度,融资参与密度,B扩展,个/轮,1,VALID,融资投资方法律主体数/融资轮数。,稳定ID足以计数，但部分PTY名称及PTY↔INV crosswalk未恢复，不能做名称级网络解释。,TRX-603418-0004-01-P01; TRX-603418-0004-01-P02,Week9_v1.0_frozen
+603418,友升股份,CV023,融资方式多样性,融资机制,B扩展,种,1,VALID,融资交易组成标准化方式=['CAPITAL_INCREASE']。,,TRX-603418-0003-01; TRX-603418-0004-01,Week9_v1.0_frozen
+603418,友升股份,CV024,股权转让交易数,二级股权流动,A核心,笔,0,VALID,按EQUITY_TRANSFER交易记录计数。,,,Week9_v1.0_frozen
+603418,友升股份,CV025,可核验股权转让对价下限,二级股权流动,A核心,万元人民币,,STRUCTURAL_NA,不将不适用金额补0。,,companies:603418,Week9_v1.0_frozen
+603418,友升股份,CV026,转让对价与融资金额比,二级股权流动,B扩展,0–∞,,STRUCTURAL_NA,不将不适用比率补0。,,companies:603418,Week9_v1.0_frozen
+603418,友升股份,CV027,金额已知融资轮数,数据可用性,Q质量,轮,2,VALID,融资轮中金额非null记录数。,,EVT-603418-0003; EVT-603418-0004,Week9_v1.0_frozen
+603418,友升股份,CV028,融资轮金额覆盖率,数据可用性,Q质量,0–1,1,VALID,金额非null融资轮数/融资轮总数。,,EVT-603418-0003; EVT-603418-0004,Week9_v1.0_frozen
+603418,友升股份,CV029,融资轮日期覆盖率,数据可用性,Q质量,0–1,1,VALID,DAY或MONTH精度融资轮数/融资轮总数。,,EVT-603418-0003; EVT-603418-0004,Week9_v1.0_frozen
+603418,友升股份,CV030,计算型轮次金额占比,数值来源结构,Q质量,0–1,0.5,VALID,CALCULATED已知金额轮数/已知金额轮数。,,EVT-603418-0003; EVT-603418-0004,Week9_v1.0_frozen
+603418,友升股份,CV031,每轮融资证据记录数,证据密度,Q质量,条/轮,1.5,VALID,关联融资轮的去重evidence_id数/融资轮数。,,EVD-603418-0004-01; EVD-603418-0004-02; EVD-603418-0005-01,Week9_v1.0_frozen
+603418,友升股份,CV032,公司级披露限制标记,披露边界,Q质量,0/1,0,VALID,FINAL_APPROVED公司记录中检查disclosure_limitation是否非空。,,companies:603418,Week9_v1.0_frozen
+688758,赛分科技,CV001,上市前直接股权融资发生标记,融资经历,A核心,0/1,1,VALID,financing_round_count=3，据此生成二元标记。,,companies:688758,Week9_v1.0_frozen
+688758,赛分科技,CV002,上市前直接股权融资轮数,融资频度,A核心,轮,3,VALID,公司冻结轮次=3；事件层TRUE计数=3。,,companies:688758; EVT-688758-0003; EVT-688758-0005; EVT-688758-0006,Week9_v1.0_frozen
+688758,赛分科技,CV003,可核验融资金额下限,融资规模,A核心,万元人民币,74000,VALID,读取公司层冻结金额；状态=DISCLOSED_COMPLETE。,,companies:688758,Week9_v1.0_frozen
+688758,赛分科技,CV004,融资金额下限对数,融资规模,B扩展,ln(1+万元),11.211833885608513,VALID,LN(1+公司层融资金额下限)。,,companies:688758,Week9_v1.0_frozen
+688758,赛分科技,CV005,已知金额轮次均值,单轮融资规模,A核心,万元人民币/已知轮,24666.666666666668,VALID,基于3个非null融资轮金额计算已知轮次金额均值。,,EVT-688758-0003; EVT-688758-0005; EVT-688758-0006,Week9_v1.0_frozen
+688758,赛分科技,CV006,已知金额轮次中位数,单轮融资规模,B扩展,万元人民币/已知轮,18500,VALID,基于3个非null融资轮金额计算已知轮次金额中位数。,,EVT-688758-0003; EVT-688758-0005; EVT-688758-0006,Week9_v1.0_frozen
+688758,赛分科技,CV007,最大已知单轮融资金额,融资峰值,B扩展,万元人民币,54000,VALID,基于3个非null融资轮金额计算最大已知轮次金额。,,EVT-688758-0003; EVT-688758-0005; EVT-688758-0006,Week9_v1.0_frozen
+688758,赛分科技,CV008,最大已知轮金额占比,融资集中度,B扩展,0–1,0.7297297297297297,VALID,最大已知轮金额/已知事件锚点金额合计。,,EVT-688758-0003; EVT-688758-0005; EVT-688758-0006,Week9_v1.0_frozen
+688758,赛分科技,CV009,融资时间跨度,融资节奏,A核心,月,8,VALID,使用3个可用年月计算最晚减最早。,,EVT-688758-0003; EVT-688758-0005; EVT-688758-0006,Week9_v1.0_frozen
+688758,赛分科技,CV010,融资轮次间隔中位数,融资节奏,B扩展,月,4,VALID,对2个相邻月份差取中位数。,,EVT-688758-0003; EVT-688758-0005; EVT-688758-0006,Week9_v1.0_frozen
+688758,赛分科技,CV011,确认PE/VC参与标记,PEVC参与,A核心,0/1,0,VALID,confirmed_pevc_legal_entity_count=0。,,companies:688758,Week9_v1.0_frozen
+688758,赛分科技,CV012,确认PE/VC法律主体数,PEVC参与,A核心,个,0,VALID,读取公司层冻结确认PE/VC法律主体数。,,companies:688758,Week9_v1.0_frozen
+688758,赛分科技,CV013,确认PE/VC占直接主体比重,PEVC参与,B扩展,0–1,0,VALID,确认PE/VC法律主体数/直接参与法律主体数。,,companies:688758,Week9_v1.0_frozen
+688758,赛分科技,CV014,确认PE/VC参与融资轮数,PEVC参与深度,B扩展,轮,0,VALID,公司层确认PE/VC数为0，因此确认PE/VC参与融资轮数为0。,,companies:688758,Week9_v1.0_frozen
+688758,赛分科技,CV015,首次确认PE/VC进入日期,PEVC进入时点,A核心,日期或年月,,STRUCTURAL_NA,首次确认PE/VC进入日期不适用。,,companies:688758,Week9_v1.0_frozen
+688758,赛分科技,CV016,首次确认PE/VC进入年份,PEVC进入时点,B扩展,年,,STRUCTURAL_NA,首次确认PE/VC进入年份不适用。,,companies:688758,Week9_v1.0_frozen
+688758,赛分科技,CV017,首次确认PE/VC融资轮位置,PEVC进入时点,B扩展,0–1,,STRUCTURAL_NA,首次确认PE/VC融资轮位置不适用。,,companies:688758,Week9_v1.0_frozen
+688758,赛分科技,CV018,确认PE/VC间接路径标记,投资路径复杂度,B扩展,0/1,0,VALID,公司层确认PE/VC数为0，因此不存在确认PE/VC间接路径。,,companies:688758,Week9_v1.0_frozen
+688758,赛分科技,CV019,确认PE/VC进入方式多样性,PEVC进入方式,B扩展,种,0,VALID,公司层确认PE/VC数为0，因此进入方式种类为0。,,companies:688758,Week9_v1.0_frozen
+688758,赛分科技,CV020,直接参与法律主体数,参与结构规模,A核心,个,17,VALID,读取公司层冻结直接参与法律主体数。,,companies:688758,Week9_v1.0_frozen
+688758,赛分科技,CV021,融资投资方法律主体数,融资参与广度,B扩展,个,2,VALID,融资轮相关交易中筛选INVESTOR，canonical_entity_id优先、否则entity_id去重。,稳定ID足以计数，但部分PTY名称及PTY↔INV crosswalk未恢复，不能做名称级网络解释。,TRX-688758-0003-02-P02; TRX-688758-0005-01-P01; TRX-688758-0005-01-P02; TRX-688758-0006-01-P01,Week9_v1.0_frozen
+688758,赛分科技,CV022,每轮融资投资方密度,融资参与密度,B扩展,个/轮,0.6666666666666666,VALID,融资投资方法律主体数/融资轮数。,稳定ID足以计数，但部分PTY名称及PTY↔INV crosswalk未恢复，不能做名称级网络解释。,TRX-688758-0003-02-P02; TRX-688758-0005-01-P01; TRX-688758-0005-01-P02; TRX-688758-0006-01-P01,Week9_v1.0_frozen
+688758,赛分科技,CV023,融资方式多样性,融资机制,B扩展,种,1,VALID,融资交易组成标准化方式=['CAPITAL_INCREASE']。,,TRX-688758-0003-02; TRX-688758-0005-01; TRX-688758-0006-01,Week9_v1.0_frozen
+688758,赛分科技,CV024,股权转让交易数,二级股权流动,A核心,笔,2,VALID,按EQUITY_TRANSFER交易记录计数。,,TRX-688758-0003-01; TRX-688758-0004-01,Week9_v1.0_frozen
+688758,赛分科技,CV025,可核验股权转让对价下限,二级股权流动,A核心,万元人民币,3000,VALID,读取公司层冻结转让对价下限；状态=DISCLOSED_COMPLETE。,,companies:688758,Week9_v1.0_frozen
+688758,赛分科技,CV026,转让对价与融资金额比,二级股权流动,B扩展,0–∞,0.04054054054054054,VALID,转让对价下限/融资金额下限；两类金额未相加。,,companies:688758,Week9_v1.0_frozen
+688758,赛分科技,CV027,金额已知融资轮数,数据可用性,Q质量,轮,3,VALID,融资轮中金额非null记录数。,,EVT-688758-0003; EVT-688758-0005; EVT-688758-0006,Week9_v1.0_frozen
+688758,赛分科技,CV028,融资轮金额覆盖率,数据可用性,Q质量,0–1,1,VALID,金额非null融资轮数/融资轮总数。,,EVT-688758-0003; EVT-688758-0005; EVT-688758-0006,Week9_v1.0_frozen
+688758,赛分科技,CV029,融资轮日期覆盖率,数据可用性,Q质量,0–1,1,VALID,DAY或MONTH精度融资轮数/融资轮总数。,,EVT-688758-0003; EVT-688758-0005; EVT-688758-0006,Week9_v1.0_frozen
+688758,赛分科技,CV030,计算型轮次金额占比,数值来源结构,Q质量,0–1,0,VALID,CALCULATED已知金额轮数/已知金额轮数。,,EVT-688758-0003; EVT-688758-0005; EVT-688758-0006,Week9_v1.0_frozen
+688758,赛分科技,CV031,每轮融资证据记录数,证据密度,Q质量,条/轮,1,VALID,关联融资轮的去重evidence_id数/融资轮数。,,EVD-688758-0003-01; EVD-688758-0005-01; EVD-688758-0006-01,Week9_v1.0_frozen
+688758,赛分科技,CV032,公司级披露限制标记,披露边界,Q质量,0/1,0,VALID,FINAL_APPROVED公司记录中检查disclosure_limitation是否非空。,,companies:688758,Week9_v1.0_frozen
+688775,影石创新,CV001,上市前直接股权融资发生标记,融资经历,A核心,0/1,0,VALID,financing_round_count=0，据此生成二元标记。,早期融资轮次未逐轮披露,companies:688775,Week9_v1.0_frozen
+688775,影石创新,CV002,上市前直接股权融资轮数,融资频度,A核心,轮,0,VALID,公司冻结轮次=0；事件层TRUE计数=0。,早期融资轮次未逐轮披露,companies:688775,Week9_v1.0_frozen
+688775,影石创新,CV003,可核验融资金额下限,融资规模,A核心,万元人民币,,NOT_COMPUTABLE,严格保留上游null，不补0。,,companies:688775,Week9_v1.0_frozen
+688775,影石创新,CV004,融资金额下限对数,融资规模,B扩展,ln(1+万元),,NOT_COMPUTABLE,对数变量继承CV003的null。,,companies:688775,Week9_v1.0_frozen
+688775,影石创新,CV005,已知金额轮次均值,单轮融资规模,A核心,万元人民币/已知轮,,STRUCTURAL_NA,已知轮次金额均值不适用。,,companies:688775,Week9_v1.0_frozen
+688775,影石创新,CV006,已知金额轮次中位数,单轮融资规模,B扩展,万元人民币/已知轮,,STRUCTURAL_NA,已知轮次金额中位数不适用。,,companies:688775,Week9_v1.0_frozen
+688775,影石创新,CV007,最大已知单轮融资金额,融资峰值,B扩展,万元人民币,,STRUCTURAL_NA,最大已知轮次金额不适用。,,companies:688775,Week9_v1.0_frozen
+688775,影石创新,CV008,最大已知轮金额占比,融资集中度,B扩展,0–1,,STRUCTURAL_NA,最大轮金额占比不适用。,,companies:688775,Week9_v1.0_frozen
+688775,影石创新,CV009,融资时间跨度,融资节奏,A核心,月,,STRUCTURAL_NA,融资时间跨度不适用。,,,Week9_v1.0_frozen
+688775,影石创新,CV010,融资轮次间隔中位数,融资节奏,B扩展,月,,STRUCTURAL_NA,融资间隔中位数不适用。,,,Week9_v1.0_frozen
+688775,影石创新,CV011,确认PE/VC参与标记,PEVC参与,A核心,0/1,0,VALID,confirmed_pevc_legal_entity_count=0。,,companies:688775,Week9_v1.0_frozen
+688775,影石创新,CV012,确认PE/VC法律主体数,PEVC参与,A核心,个,0,VALID,读取公司层冻结确认PE/VC法律主体数。,,companies:688775,Week9_v1.0_frozen
+688775,影石创新,CV013,确认PE/VC占直接主体比重,PEVC参与,B扩展,0–1,0,VALID,确认PE/VC法律主体数/直接参与法律主体数。,,companies:688775,Week9_v1.0_frozen
+688775,影石创新,CV014,确认PE/VC参与融资轮数,PEVC参与深度,B扩展,轮,0,VALID,公司层确认PE/VC数为0，因此确认PE/VC参与融资轮数为0。,,companies:688775,Week9_v1.0_frozen
+688775,影石创新,CV015,首次确认PE/VC进入日期,PEVC进入时点,A核心,日期或年月,,STRUCTURAL_NA,首次确认PE/VC进入日期不适用。,,companies:688775,Week9_v1.0_frozen
+688775,影石创新,CV016,首次确认PE/VC进入年份,PEVC进入时点,B扩展,年,,STRUCTURAL_NA,首次确认PE/VC进入年份不适用。,,companies:688775,Week9_v1.0_frozen
+688775,影石创新,CV017,首次确认PE/VC融资轮位置,PEVC进入时点,B扩展,0–1,,STRUCTURAL_NA,首次确认PE/VC融资轮位置不适用。,,companies:688775,Week9_v1.0_frozen
+688775,影石创新,CV018,确认PE/VC间接路径标记,投资路径复杂度,B扩展,0/1,0,VALID,公司层确认PE/VC数为0，因此不存在确认PE/VC间接路径。,,companies:688775,Week9_v1.0_frozen
+688775,影石创新,CV019,确认PE/VC进入方式多样性,PEVC进入方式,B扩展,种,0,VALID,公司层确认PE/VC数为0，因此进入方式种类为0。,,companies:688775,Week9_v1.0_frozen
+688775,影石创新,CV020,直接参与法律主体数,参与结构规模,A核心,个,1,VALID,读取公司层冻结直接参与法律主体数。,,companies:688775,Week9_v1.0_frozen
+688775,影石创新,CV021,融资投资方法律主体数,融资参与广度,B扩展,个,0,VALID,冻结口径下无融资轮，融资投资方法律主体数为0。,,companies:688775,Week9_v1.0_frozen
+688775,影石创新,CV022,每轮融资投资方密度,融资参与密度,B扩展,个/轮,,STRUCTURAL_NA,不把0轮公司的比率写成0。,,companies:688775,Week9_v1.0_frozen
+688775,影石创新,CV023,融资方式多样性,融资机制,B扩展,种,0,VALID,融资交易组成标准化方式=[]。,,,Week9_v1.0_frozen
+688775,影石创新,CV024,股权转让交易数,二级股权流动,A核心,笔,1,VALID,按EQUITY_TRANSFER交易记录计数。,,TRX-688775-0003-01,Week9_v1.0_frozen
+688775,影石创新,CV025,可核验股权转让对价下限,二级股权流动,A核心,万元人民币,1462.7126,VALID,读取公司层冻结转让对价下限；状态=KNOWN_LOWER_BOUND。,,companies:688775,Week9_v1.0_frozen
+688775,影石创新,CV026,转让对价与融资金额比,二级股权流动,B扩展,0–∞,,NOT_COMPUTABLE,比例分母闸门未通过。,,companies:688775,Week9_v1.0_frozen
+688775,影石创新,CV027,金额已知融资轮数,数据可用性,Q质量,轮,0,VALID,融资轮中金额非null记录数。,,,Week9_v1.0_frozen
+688775,影石创新,CV028,融资轮金额覆盖率,数据可用性,Q质量,0–1,,STRUCTURAL_NA,分母为0时返回null。,,companies:688775,Week9_v1.0_frozen
+688775,影石创新,CV029,融资轮日期覆盖率,数据可用性,Q质量,0–1,,STRUCTURAL_NA,分母为0时返回null。,,companies:688775,Week9_v1.0_frozen
+688775,影石创新,CV030,计算型轮次金额占比,数值来源结构,Q质量,0–1,,STRUCTURAL_NA,分母为0时返回null。,,companies:688775,Week9_v1.0_frozen
+688775,影石创新,CV031,每轮融资证据记录数,证据密度,Q质量,条/轮,,STRUCTURAL_NA,分母为0时返回null。,,companies:688775,Week9_v1.0_frozen
+688775,影石创新,CV032,公司级披露限制标记,披露边界,Q质量,0/1,1,VALID,FINAL_APPROVED公司记录中检查disclosure_limitation是否非空。,,companies:688775,Week9_v1.0_frozen
+920100,三协电机,CV001,上市前直接股权融资发生标记,融资经历,A核心,0/1,1,VALID,financing_round_count=2，据此生成二元标记。,,companies:920100,Week9_v1.0_frozen
+920100,三协电机,CV002,上市前直接股权融资轮数,融资频度,A核心,轮,2,VALID,公司冻结轮次=2；事件层TRUE计数=2。,,companies:920100; W7-OVR-920100-2022-DI; W7-OVR-920100-2023-DI,Week9_v1.0_frozen
+920100,三协电机,CV003,可核验融资金额下限,融资规模,A核心,万元人民币,4097.49,VALID,读取公司层冻结金额；状态=DISCLOSED_COMPLETE。,,companies:920100,Week9_v1.0_frozen
+920100,三协电机,CV004,融资金额下限对数,融资规模,B扩展,ln(1+万元),8.318373892173065,VALID,LN(1+公司层融资金额下限)。,,companies:920100,Week9_v1.0_frozen
+920100,三协电机,CV005,已知金额轮次均值,单轮融资规模,A核心,万元人民币/已知轮,2048.745,VALID,基于2个非null融资轮金额计算已知轮次金额均值。,,W7-OVR-920100-2022-DI; W7-OVR-920100-2023-DI,Week9_v1.0_frozen
+920100,三协电机,CV006,已知金额轮次中位数,单轮融资规模,B扩展,万元人民币/已知轮,2048.745,VALID,基于2个非null融资轮金额计算已知轮次金额中位数。,,W7-OVR-920100-2022-DI; W7-OVR-920100-2023-DI,Week9_v1.0_frozen
+920100,三协电机,CV007,最大已知单轮融资金额,融资峰值,B扩展,万元人民币,2374.4,VALID,基于2个非null融资轮金额计算最大已知轮次金额。,,W7-OVR-920100-2022-DI; W7-OVR-920100-2023-DI,Week9_v1.0_frozen
+920100,三协电机,CV008,最大已知轮金额占比,融资集中度,B扩展,0–1,0.5794767040310044,VALID,最大已知轮金额/已知事件锚点金额合计。,,W7-OVR-920100-2022-DI; W7-OVR-920100-2023-DI,Week9_v1.0_frozen
+920100,三协电机,CV009,融资时间跨度,融资节奏,A核心,月,13,VALID,使用2个可用年月计算最晚减最早。,,W7-OVR-920100-2022-DI; W7-OVR-920100-2023-DI,Week9_v1.0_frozen
+920100,三协电机,CV010,融资轮次间隔中位数,融资节奏,B扩展,月,13,VALID,对1个相邻月份差取中位数。,,W7-OVR-920100-2022-DI; W7-OVR-920100-2023-DI,Week9_v1.0_frozen
+920100,三协电机,CV011,确认PE/VC参与标记,PEVC参与,A核心,0/1,1,VALID,confirmed_pevc_legal_entity_count=2。,,companies:920100,Week9_v1.0_frozen
+920100,三协电机,CV012,确认PE/VC法律主体数,PEVC参与,A核心,个,2,VALID,读取公司层冻结确认PE/VC法律主体数。,,companies:920100,Week9_v1.0_frozen
+920100,三协电机,CV013,确认PE/VC占直接主体比重,PEVC参与,B扩展,0–1,0.11764705882352941,VALID,确认PE/VC法律主体数/直接参与法律主体数。,,companies:920100,Week9_v1.0_frozen
+920100,三协电机,CV014,确认PE/VC参与融资轮数,PEVC参与深度,B扩展,轮,1,VALID,连接融资轮→交易→party→PEVC_CONFIRMED，并按event_id去重。,,W7-OVR-920100-2022-DI-T001-P01; W7-OVR-920100-2022-DI-T001-P02,Week9_v1.0_frozen
+920100,三协电机,CV015,首次确认PE/VC进入日期,PEVC进入时点,A核心,日期或年月,2022-09-01,VALID,两条确认PE/VC路径的最早交易完成日。,两条路径在Week9补充研究层物化；W8-CAN-015摘要级证据限制继续有效。,SUP-PATH-920100-2022-001; SUP-PATH-920100-2022-002,Week9_v1.0_frozen
+920100,三协电机,CV016,首次确认PE/VC进入年份,PEVC进入时点,B扩展,年,2022,VALID,从CV015修复日期提取年份。,两条路径在Week9补充研究层物化；W8-CAN-015摘要级证据限制继续有效。,SUP-PATH-920100-2022-001; SUP-PATH-920100-2022-002,Week9_v1.0_frozen
+920100,三协电机,CV017,首次确认PE/VC融资轮位置,PEVC进入时点,B扩展,0–1,0.5,VALID,首次确认PE/VC融资轮序位=1，总轮数=2。,,W7-OVR-920100-2022-DI-T001-P01; W7-OVR-920100-2022-DI-T001-P02,Week9_v1.0_frozen
+920100,三协电机,CV018,确认PE/VC间接路径标记,投资路径复杂度,B扩展,0/1,0,VALID,完整覆盖2个确认PE/VC主体后，间接路径计数为0。,两只确认PE/VC主体均已覆盖且路径均为DIRECT；0是显式零，不是缺失填充。,SUP-PATH-920100-2022-001; SUP-PATH-920100-2022-002,Week9_v1.0_frozen
+920100,三协电机,CV019,确认PE/VC进入方式多样性,PEVC进入方式,B扩展,种,1,VALID,确认PE/VC路径的非空entry_method去重数为1。,两条路径均为定向发行进入；摘要级证据限制继续有效。,SUP-PATH-920100-2022-001; SUP-PATH-920100-2022-002,Week9_v1.0_frozen
+920100,三协电机,CV020,直接参与法律主体数,参与结构规模,A核心,个,17,VALID,读取公司层冻结直接参与法律主体数。,,companies:920100,Week9_v1.0_frozen
+920100,三协电机,CV021,融资投资方法律主体数,融资参与广度,B扩展,个,2,VALID,融资轮相关交易中筛选INVESTOR，canonical_entity_id优先、否则entity_id去重。,,W7-OVR-920100-2022-DI-T001-P01; W7-OVR-920100-2022-DI-T001-P02,Week9_v1.0_frozen
+920100,三协电机,CV022,每轮融资投资方密度,融资参与密度,B扩展,个/轮,1,VALID,融资投资方法律主体数/融资轮数。,,W7-OVR-920100-2022-DI-T001-P01; W7-OVR-920100-2022-DI-T001-P02,Week9_v1.0_frozen
+920100,三协电机,CV023,融资方式多样性,融资机制,B扩展,种,1,VALID,融资交易组成标准化方式=['DIRECTIONAL_ISSUANCE']。,,W7-OVR-920100-2022-DI-T001; W7-OVR-920100-2023-DI-T001,Week9_v1.0_frozen
+920100,三协电机,CV024,股权转让交易数,二级股权流动,A核心,笔,0,VALID,按EQUITY_TRANSFER交易记录计数。,,,Week9_v1.0_frozen
+920100,三协电机,CV025,可核验股权转让对价下限,二级股权流动,A核心,万元人民币,,STRUCTURAL_NA,不将不适用金额补0。,,companies:920100,Week9_v1.0_frozen
+920100,三协电机,CV026,转让对价与融资金额比,二级股权流动,B扩展,0–∞,,STRUCTURAL_NA,不将不适用比率补0。,,companies:920100,Week9_v1.0_frozen
+920100,三协电机,CV027,金额已知融资轮数,数据可用性,Q质量,轮,2,VALID,融资轮中金额非null记录数。,,W7-OVR-920100-2022-DI; W7-OVR-920100-2023-DI,Week9_v1.0_frozen
+920100,三协电机,CV028,融资轮金额覆盖率,数据可用性,Q质量,0–1,1,VALID,金额非null融资轮数/融资轮总数。,,W7-OVR-920100-2022-DI; W7-OVR-920100-2023-DI,Week9_v1.0_frozen
+920100,三协电机,CV029,融资轮日期覆盖率,数据可用性,Q质量,0–1,1,VALID,DAY或MONTH精度融资轮数/融资轮总数。,,W7-OVR-920100-2022-DI; W7-OVR-920100-2023-DI,Week9_v1.0_frozen
+920100,三协电机,CV030,计算型轮次金额占比,数值来源结构,Q质量,0–1,0,VALID,CALCULATED已知金额轮数/已知金额轮数。,,W7-OVR-920100-2022-DI; W7-OVR-920100-2023-DI,Week9_v1.0_frozen
+920100,三协电机,CV031,每轮融资证据记录数,证据密度,Q质量,条/轮,0,VALID,关联融资轮的去重evidence_id数/融资轮数。,三协电机override原文quote未在恢复包物化；0表示事件级evidence表链接数，不表示没有披露依据。,W7-OVR-920100-2022-DI; W7-OVR-920100-2023-DI,Week9_v1.0_frozen
+920100,三协电机,CV032,公司级披露限制标记,披露边界,Q质量,0/1,0,VALID,FINAL_APPROVED公司记录中检查disclosure_limitation是否非空。,,companies:920100,Week9_v1.0_frozen
+920116,星图测控,CV001,上市前直接股权融资发生标记,融资经历,A核心,0/1,1,VALID,financing_round_count=1，据此生成二元标记。,,companies:920116,Week9_v1.0_frozen
+920116,星图测控,CV002,上市前直接股权融资轮数,融资频度,A核心,轮,1,VALID,公司冻结轮次=1；事件层TRUE计数=1。,,companies:920116; EVT-920116-0001,Week9_v1.0_frozen
+920116,星图测控,CV003,可核验融资金额下限,融资规模,A核心,万元人民币,4725,VALID,读取公司层冻结金额；状态=DISCLOSED_COMPLETE。,,companies:920116,Week9_v1.0_frozen
+920116,星图测控,CV004,融资金额下限对数,融资规模,B扩展,ln(1+万元),8.460834457746854,VALID,LN(1+公司层融资金额下限)。,,companies:920116,Week9_v1.0_frozen
+920116,星图测控,CV005,已知金额轮次均值,单轮融资规模,A核心,万元人民币/已知轮,4725,VALID,基于1个非null融资轮金额计算已知轮次金额均值。,,EVT-920116-0001,Week9_v1.0_frozen
+920116,星图测控,CV006,已知金额轮次中位数,单轮融资规模,B扩展,万元人民币/已知轮,4725,VALID,基于1个非null融资轮金额计算已知轮次金额中位数。,,EVT-920116-0001,Week9_v1.0_frozen
+920116,星图测控,CV007,最大已知单轮融资金额,融资峰值,B扩展,万元人民币,4725,VALID,基于1个非null融资轮金额计算最大已知轮次金额。,,EVT-920116-0001,Week9_v1.0_frozen
+920116,星图测控,CV008,最大已知轮金额占比,融资集中度,B扩展,0–1,1,VALID,最大已知轮金额/已知事件锚点金额合计。,,EVT-920116-0001,Week9_v1.0_frozen
+920116,星图测控,CV009,融资时间跨度,融资节奏,A核心,月,,STRUCTURAL_NA,融资时间跨度不适用。,,EVT-920116-0001,Week9_v1.0_frozen
+920116,星图测控,CV010,融资轮次间隔中位数,融资节奏,B扩展,月,,STRUCTURAL_NA,融资间隔中位数不适用。,,EVT-920116-0001,Week9_v1.0_frozen
+920116,星图测控,CV011,确认PE/VC参与标记,PEVC参与,A核心,0/1,0,VALID,confirmed_pevc_legal_entity_count=0。,,companies:920116,Week9_v1.0_frozen
+920116,星图测控,CV012,确认PE/VC法律主体数,PEVC参与,A核心,个,0,VALID,读取公司层冻结确认PE/VC法律主体数。,,companies:920116,Week9_v1.0_frozen
+920116,星图测控,CV013,确认PE/VC占直接主体比重,PEVC参与,B扩展,0–1,0,VALID,确认PE/VC法律主体数/直接参与法律主体数。,,companies:920116,Week9_v1.0_frozen
+920116,星图测控,CV014,确认PE/VC参与融资轮数,PEVC参与深度,B扩展,轮,0,VALID,公司层确认PE/VC数为0，因此确认PE/VC参与融资轮数为0。,,companies:920116,Week9_v1.0_frozen
+920116,星图测控,CV015,首次确认PE/VC进入日期,PEVC进入时点,A核心,日期或年月,,STRUCTURAL_NA,首次确认PE/VC进入日期不适用。,,companies:920116,Week9_v1.0_frozen
+920116,星图测控,CV016,首次确认PE/VC进入年份,PEVC进入时点,B扩展,年,,STRUCTURAL_NA,首次确认PE/VC进入年份不适用。,,companies:920116,Week9_v1.0_frozen
+920116,星图测控,CV017,首次确认PE/VC融资轮位置,PEVC进入时点,B扩展,0–1,,STRUCTURAL_NA,首次确认PE/VC融资轮位置不适用。,,companies:920116,Week9_v1.0_frozen
+920116,星图测控,CV018,确认PE/VC间接路径标记,投资路径复杂度,B扩展,0/1,0,VALID,公司层确认PE/VC数为0，因此不存在确认PE/VC间接路径。,,companies:920116,Week9_v1.0_frozen
+920116,星图测控,CV019,确认PE/VC进入方式多样性,PEVC进入方式,B扩展,种,0,VALID,公司层确认PE/VC数为0，因此进入方式种类为0。,,companies:920116,Week9_v1.0_frozen
+920116,星图测控,CV020,直接参与法律主体数,参与结构规模,A核心,个,3,VALID,读取公司层冻结直接参与法律主体数。,,companies:920116,Week9_v1.0_frozen
+920116,星图测控,CV021,融资投资方法律主体数,融资参与广度,B扩展,个,3,VALID,融资轮相关交易中筛选INVESTOR，canonical_entity_id优先、否则entity_id去重。,稳定ID足以计数，但部分PTY名称及PTY↔INV crosswalk未恢复，不能做名称级网络解释。,TRX-920116-0001-01-P01; TRX-920116-0001-01-P02; TRX-920116-0001-01-P03,Week9_v1.0_frozen
+920116,星图测控,CV022,每轮融资投资方密度,融资参与密度,B扩展,个/轮,3,VALID,融资投资方法律主体数/融资轮数。,稳定ID足以计数，但部分PTY名称及PTY↔INV crosswalk未恢复，不能做名称级网络解释。,TRX-920116-0001-01-P01; TRX-920116-0001-01-P02; TRX-920116-0001-01-P03,Week9_v1.0_frozen
+920116,星图测控,CV023,融资方式多样性,融资机制,B扩展,种,1,VALID,融资交易组成标准化方式=['DIRECTIONAL_ISSUANCE']。,,TRX-920116-0001-01,Week9_v1.0_frozen
+920116,星图测控,CV024,股权转让交易数,二级股权流动,A核心,笔,0,VALID,按EQUITY_TRANSFER交易记录计数。,,,Week9_v1.0_frozen
+920116,星图测控,CV025,可核验股权转让对价下限,二级股权流动,A核心,万元人民币,,STRUCTURAL_NA,不将不适用金额补0。,,companies:920116,Week9_v1.0_frozen
+920116,星图测控,CV026,转让对价与融资金额比,二级股权流动,B扩展,0–∞,,STRUCTURAL_NA,不将不适用比率补0。,,companies:920116,Week9_v1.0_frozen
+920116,星图测控,CV027,金额已知融资轮数,数据可用性,Q质量,轮,1,VALID,融资轮中金额非null记录数。,,EVT-920116-0001,Week9_v1.0_frozen
+920116,星图测控,CV028,融资轮金额覆盖率,数据可用性,Q质量,0–1,1,VALID,金额非null融资轮数/融资轮总数。,,EVT-920116-0001,Week9_v1.0_frozen
+920116,星图测控,CV029,融资轮日期覆盖率,数据可用性,Q质量,0–1,1,VALID,DAY或MONTH精度融资轮数/融资轮总数。,,EVT-920116-0001,Week9_v1.0_frozen
+920116,星图测控,CV030,计算型轮次金额占比,数值来源结构,Q质量,0–1,0,VALID,CALCULATED已知金额轮数/已知金额轮数。,,EVT-920116-0001,Week9_v1.0_frozen
+920116,星图测控,CV031,每轮融资证据记录数,证据密度,Q质量,条/轮,5,VALID,关联融资轮的去重evidence_id数/融资轮数。,,EVD-920116-0001-01; EVD-920116-0001-02; EVD-920116-0001-03; EVD-920116-0001-04; EVD-920116-0001-05,Week9_v1.0_frozen
+920116,星图测控,CV032,公司级披露限制标记,披露边界,Q质量,0/1,0,VALID,FINAL_APPROVED公司记录中检查disclosure_limitation是否非空。,,companies:920116,Week9_v1.0_frozen
+301606,绿联科技,CV001,上市前直接股权融资发生标记,融资经历,A核心,0/1,1,VALID,"IF(CV002>0,1,0)",,Week11绿联科技标准表与招股书页码证据,Week11_301606_v1.0
+301606,绿联科技,CV002,上市前直接股权融资轮数,融资频度,A核心,轮,5,VALID,COUNT(financing_round_flag=TRUE),,Week11绿联科技标准表与招股书页码证据,Week11_301606_v1.0
+301606,绿联科技,CV003,可核验融资金额下限,融资规模,A核心,万元人民币,32838.569999,VALID,"SUM(900,270.569999,1000,668,30000)",,Week11绿联科技标准表与招股书页码证据,Week11_301606_v1.0
+301606,绿联科技,CV004,融资金额下限对数,融资规模,B扩展,ln(1+万元),10.399389469662125,VALID,LN(1+CV003),,Week11绿联科技标准表与招股书页码证据,Week11_301606_v1.0
+301606,绿联科技,CV005,已知金额轮次均值,单轮融资规模,A核心,万元人民币/已知轮,6567.7139998,VALID,CV003/CV027,,Week11绿联科技标准表与招股书页码证据,Week11_301606_v1.0
+301606,绿联科技,CV006,已知金额轮次中位数,单轮融资规模,B扩展,万元人民币/已知轮,900,VALID,MEDIAN(已知5轮金额),,Week11绿联科技标准表与招股书页码证据,Week11_301606_v1.0
+301606,绿联科技,CV007,最大已知单轮融资金额,融资峰值,B扩展,万元人民币,30000,VALID,MAX(已知5轮金额),,Week11绿联科技标准表与招股书页码证据,Week11_301606_v1.0
+301606,绿联科技,CV008,最大已知轮金额占比,融资集中度,B扩展,0–1,0.9135598779396776,VALID,CV007/CV003,,Week11绿联科技标准表与招股书页码证据,Week11_301606_v1.0
+301606,绿联科技,CV009,融资时间跨度,融资节奏,A核心,月,44,VALID,2021-06与2017-10月份差,,Week11绿联科技标准表与招股书页码证据,Week11_301606_v1.0
+301606,绿联科技,CV010,融资轮次间隔中位数,融资节奏,B扩展,月,16.5,VALID,"MEDIAN(0,14,19,23)",,Week11绿联科技标准表与招股书页码证据,Week11_301606_v1.0
+301606,绿联科技,CV011,确认PE/VC参与标记,PEVC参与,A核心,0/1,1,VALID,"IF(CV012>0,1,0)",,Week11绿联科技标准表与招股书页码证据,Week11_301606_v1.0
+301606,绿联科技,CV012,确认PE/VC法律主体数,PEVC参与,A核心,个,2,VALID,COUNT(PEVC_CONFIRMED direct entities),,Week11绿联科技标准表与招股书页码证据,Week11_301606_v1.0
+301606,绿联科技,CV013,确认PE/VC占直接主体比重,PEVC参与,B扩展,0–1,0.18181818181818182,VALID,CV012/CV020,,Week11绿联科技标准表与招股书页码证据,Week11_301606_v1.0
+301606,绿联科技,CV014,确认PE/VC参与融资轮数,PEVC参与深度,B扩展,轮,1,VALID,确认PE/VC参与融资轮去重数,,Week11绿联科技标准表与招股书页码证据,Week11_301606_v1.0
+301606,绿联科技,CV015,首次确认PE/VC进入日期,PEVC进入时点,A核心,日期或年月,2021-05,VALID,确认PE/VC最早确认进入月份,首次进入是老股受让，不是发行人融资。,Week11绿联科技标准表与招股书页码证据,Week11_301606_v1.0
+301606,绿联科技,CV016,首次确认PE/VC进入年份,PEVC进入时点,B扩展,年,2021,VALID,YEAR(CV015),,Week11绿联科技标准表与招股书页码证据,Week11_301606_v1.0
+301606,绿联科技,CV017,首次确认PE/VC融资轮位置,PEVC进入时点,B扩展,0–1,1.0,VALID,首次确认PE/VC融资轮序位5/总轮数5,必须与CV015联合解释；第5轮位置不等于PE/VC首次接触时点。,Week11绿联科技标准表与招股书页码证据,Week11_301606_v1.0
+301606,绿联科技,CV018,确认PE/VC间接路径标记,投资路径复杂度,B扩展,0/1,0,VALID,确认PE/VC路径均为DIRECT,,Week11绿联科技标准表与招股书页码证据,Week11_301606_v1.0
+301606,绿联科技,CV019,确认PE/VC进入方式多样性,PEVC进入方式,B扩展,种,2,VALID,"COUNT(DISTINCT TRANSFER_ENTRY,DIRECTIONAL_ISSUANCE_ENTRY)",两种进入方式属于同一高瓴主体的受让与后续增资。,Week11绿联科技标准表与招股书页码证据,Week11_301606_v1.0
+301606,绿联科技,CV020,直接参与法律主体数,参与结构规模,A核心,个,11,VALID,直接参与主体去重数（不含发行人）,,Week11绿联科技标准表与招股书页码证据,Week11_301606_v1.0
+301606,绿联科技,CV021,融资投资方法律主体数,融资参与广度,B扩展,个,11,VALID,融资轮INVESTOR主体去重数,,Week11绿联科技标准表与招股书页码证据,Week11_301606_v1.0
+301606,绿联科技,CV022,每轮融资投资方密度,融资参与密度,B扩展,个/轮,2.2,VALID,CV021/CV002,,Week11绿联科技标准表与招股书页码证据,Week11_301606_v1.0
+301606,绿联科技,CV023,融资方式多样性,融资机制,B扩展,种,2,VALID,CAPITAL_INCREASE与DIRECTIONAL_ISSUANCE两类,,Week11绿联科技标准表与招股书页码证据,Week11_301606_v1.0
+301606,绿联科技,CV024,股权转让交易数,二级股权流动,A核心,笔,2,VALID,COUNT(EQUITY_TRANSFER transactions),,Week11绿联科技标准表与招股书页码证据,Week11_301606_v1.0
+301606,绿联科技,CV025,可核验股权转让对价下限,二级股权流动,A核心,万元人民币,30000,VALID,20000+10000,,Week11绿联科技标准表与招股书页码证据,Week11_301606_v1.0
+301606,绿联科技,CV026,转让对价与融资金额比,二级股权流动,B扩展,0–∞,0.9135598779396776,VALID,CV025/CV003,,Week11绿联科技标准表与招股书页码证据,Week11_301606_v1.0
+301606,绿联科技,CV027,金额已知融资轮数,数据可用性,Q质量,轮,5,VALID,已知金额融资轮数,,Week11绿联科技标准表与招股书页码证据,Week11_301606_v1.0
+301606,绿联科技,CV028,融资轮金额覆盖率,数据可用性,Q质量,0–1,1.0,VALID,CV027/CV002,,Week11绿联科技标准表与招股书页码证据,Week11_301606_v1.0
+301606,绿联科技,CV029,融资轮日期覆盖率,数据可用性,Q质量,0–1,1.0,VALID,具有MONTH精度日期轮数/CV002,,Week11绿联科技标准表与招股书页码证据,Week11_301606_v1.0
+301606,绿联科技,CV030,计算型轮次金额占比,数值来源结构,Q质量,0–1,0.4,VALID,CALCULATED金额轮数/CV027,,Week11绿联科技标准表与招股书页码证据,Week11_301606_v1.0
+301606,绿联科技,CV031,每轮融资证据记录数,证据密度,Q质量,条/轮,1.6,VALID,直接关联融资轮证据8条/CV002,证据记录密度不是披露质量评分。,Week11绿联科技标准表与招股书页码证据,Week11_301606_v1.0
+301606,绿联科技,CV032,公司级披露限制标记,披露边界,Q质量,0/1,0,VALID,公司级披露限制为空，因此为0,0仅表示本次重建无公司级限制，不代表披露绝对完美。,Week11绿联科技标准表与招股书页码证据,Week11_301606_v1.0
+688726,拉普拉斯,CV001,上市前直接股权融资发生标记,融资经历,A核心,0/1,1,VALID_WITH_LIMITATION,"IF(CV002>0,1,0)",观察窗始于2020年；2016年设立至报告期初的股本变化未逐笔披露，按可核验下限解释。,申报稿正文第33—40、119—120页；正式版上交所链接交叉核验,Week11_688726_v1.1
+688726,拉普拉斯,CV002,上市前直接股权融资轮数,融资频度,A核心,轮,11,VALID_WITH_LIMITATION,COUNT(2020—2022可核验financing_round_flag=TRUE),观察窗始于2020年；2016年设立至报告期初的股本变化未逐笔披露，按可核验下限解释。,申报稿正文第33—40、119—120页；正式版上交所链接交叉核验,Week11_688726_v1.1
+688726,拉普拉斯,CV003,可核验融资金额下限,融资规模,A核心,万元人民币,167442.1046,VALID_WITH_LIMITATION,SUM(11轮可核验融资金额),观察窗始于2020年；2016年设立至报告期初的股本变化未逐笔披露，按可核验下限解释。,申报稿正文第33—40、119—120页；正式版上交所链接交叉核验,Week11_688726_v1.1
+688726,拉普拉斯,CV004,融资金额下限对数,融资规模,B扩展,ln(1+万元),12.028398898515118,VALID_WITH_LIMITATION,LN(1+CV003),观察窗始于2020年；2016年设立至报告期初的股本变化未逐笔披露，按可核验下限解释。,申报稿正文第33—40、119—120页；正式版上交所链接交叉核验,Week11_688726_v1.1
+688726,拉普拉斯,CV005,已知金额轮次均值,单轮融资规模,A核心,万元人民币/已知轮,15222.009509090909,VALID_WITH_LIMITATION,CV003/CV027,观察窗始于2020年；2016年设立至报告期初的股本变化未逐笔披露，按可核验下限解释。,申报稿正文第33—40、119—120页；正式版上交所链接交叉核验,Week11_688726_v1.1
+688726,拉普拉斯,CV006,已知金额轮次中位数,单轮融资规模,B扩展,万元人民币/已知轮,9200,VALID_WITH_LIMITATION,MEDIAN(11轮可核验金额),观察窗始于2020年；2016年设立至报告期初的股本变化未逐笔披露，按可核验下限解释。,申报稿正文第33—40、119—120页；正式版上交所链接交叉核验,Week11_688726_v1.1
+688726,拉普拉斯,CV007,最大已知单轮融资金额,融资峰值,B扩展,万元人民币,67900,VALID_WITH_LIMITATION,MAX(11轮可核验金额),观察窗始于2020年；2016年设立至报告期初的股本变化未逐笔披露，按可核验下限解释。,申报稿正文第33—40、119—120页；正式版上交所链接交叉核验,Week11_688726_v1.1
+688726,拉普拉斯,CV008,最大已知轮金额占比,融资集中度,B扩展,0–1,0.4055132976392367,VALID_WITH_LIMITATION,CV007/CV003,观察窗始于2020年；2016年设立至报告期初的股本变化未逐笔披露，按可核验下限解释。,申报稿正文第33—40、119—120页；正式版上交所链接交叉核验,Week11_688726_v1.1
+688726,拉普拉斯,CV009,融资时间跨度,融资节奏,A核心,月,32,VALID_WITH_LIMITATION,2022-12与2020-04月份差,观察窗始于2020年；2016年设立至报告期初的股本变化未逐笔披露，按可核验下限解释。,申报稿正文第33—40、119—120页；正式版上交所链接交叉核验,Week11_688726_v1.1
+688726,拉普拉斯,CV010,融资轮次间隔中位数,融资节奏,B扩展,月,2.5,VALID_WITH_LIMITATION,MEDIAN(10个相邻轮次月份差),观察窗始于2020年；2016年设立至报告期初的股本变化未逐笔披露，按可核验下限解释。,申报稿正文第33—40、119—120页；正式版上交所链接交叉核验,Week11_688726_v1.1
+688726,拉普拉斯,CV011,确认PE/VC参与标记,PEVC参与,A核心,0/1,1,VALID_WITH_LIMITATION,"IF(CV012>0,1,0)",观察窗始于2020年；2016年设立至报告期初的股本变化未逐笔披露，按可核验下限解释。,申报稿正文第33—40、119—120页；正式版上交所链接交叉核验,Week11_688726_v1.1
+688726,拉普拉斯,CV012,确认PE/VC法律主体数,PEVC参与,A核心,个,29,VALID_WITH_LIMITATION,COUNT(招股书备案私募基金清单与参与主体交集),观察窗始于2020年；2016年设立至报告期初的股本变化未逐笔披露，按可核验下限解释。,申报稿正文第33—40、119—120页；正式版上交所链接交叉核验,Week11_688726_v1.1
+688726,拉普拉斯,CV013,确认PE/VC占直接主体比重,PEVC参与,B扩展,0–1,0.37662337662337664,VALID_WITH_LIMITATION,CV012/CV020,观察窗始于2020年；2016年设立至报告期初的股本变化未逐笔披露，按可核验下限解释。,申报稿正文第33—40、119—120页；正式版上交所链接交叉核验,Week11_688726_v1.1
+688726,拉普拉斯,CV014,确认PE/VC参与融资轮数,PEVC参与深度,B扩展,轮,6,VALID_WITH_LIMITATION,COUNT(至少1名确认PE/VC参与的融资轮),观察窗始于2020年；2016年设立至报告期初的股本变化未逐笔披露，按可核验下限解释。,申报稿正文第33—40、119—120页；正式版上交所链接交叉核验,Week11_688726_v1.1
+688726,拉普拉斯,CV015,首次确认PE/VC进入日期,PEVC进入时点,A核心,日期或年月,2020-10,VALID_WITH_LIMITATION,确认PE/VC最早可核验进入月份（如东睿达老股受让）,观察窗始于2020年；2016年设立至报告期初的股本变化未逐笔披露，按可核验下限解释。 首次进入仅指最早可核验时点。,申报稿正文第33—40、119—120页；正式版上交所链接交叉核验,Week11_688726_v1.1
+688726,拉普拉斯,CV016,首次确认PE/VC进入年份,PEVC进入时点,B扩展,年,2020,VALID_WITH_LIMITATION,YEAR(CV015),观察窗始于2020年；2016年设立至报告期初的股本变化未逐笔披露，按可核验下限解释。,申报稿正文第33—40、119—120页；正式版上交所链接交叉核验,Week11_688726_v1.1
+688726,拉普拉斯,CV017,首次确认PE/VC融资轮位置,PEVC进入时点,B扩展,0–1,0.18181818181818182,VALID_WITH_LIMITATION,首次确认PE/VC融资轮序位2/11,观察窗始于2020年；2016年设立至报告期初的股本变化未逐笔披露，按可核验下限解释。 相对轮次位置以11轮可见融资为分母。,申报稿正文第33—40、119—120页；正式版上交所链接交叉核验,Week11_688726_v1.1
+688726,拉普拉斯,CV018,确认PE/VC间接路径标记,投资路径复杂度,B扩展,0/1,0,VALID_WITH_LIMITATION,确认路径均为DIRECT,观察窗始于2020年；2016年设立至报告期初的股本变化未逐笔披露，按可核验下限解释。,申报稿正文第33—40、119—120页；正式版上交所链接交叉核验,Week11_688726_v1.1
+688726,拉普拉斯,CV019,确认PE/VC进入方式多样性,PEVC进入方式,B扩展,种,2,VALID_WITH_LIMITATION,"COUNT(DISTINCT TRANSFER_ENTRY,CAPITAL_INCREASE_ENTRY)",观察窗始于2020年；2016年设立至报告期初的股本变化未逐笔披露，按可核验下限解释。,申报稿正文第33—40、119—120页；正式版上交所链接交叉核验,Week11_688726_v1.1
+688726,拉普拉斯,CV020,直接参与法律主体数,参与结构规模,A核心,个,77,VALID_WITH_LIMITATION,可核验交易与设立参与主体去重数,观察窗始于2020年；2016年设立至报告期初的股本变化未逐笔披露，按可核验下限解释。,申报稿正文第33—40、119—120页；正式版上交所链接交叉核验,Week11_688726_v1.1
+688726,拉普拉斯,CV021,融资投资方法律主体数,融资参与广度,B扩展,个,55,VALID_WITH_LIMITATION,11轮融资INVESTOR主体去重数,观察窗始于2020年；2016年设立至报告期初的股本变化未逐笔披露，按可核验下限解释。,申报稿正文第33—40、119—120页；正式版上交所链接交叉核验,Week11_688726_v1.1
+688726,拉普拉斯,CV022,每轮融资投资方密度,融资参与密度,B扩展,个/轮,5.0,VALID_WITH_LIMITATION,CV021/CV002,观察窗始于2020年；2016年设立至报告期初的股本变化未逐笔披露，按可核验下限解释。,申报稿正文第33—40、119—120页；正式版上交所链接交叉核验,Week11_688726_v1.1
+688726,拉普拉斯,CV023,融资方式多样性,融资机制,B扩展,种,1,VALID_WITH_LIMITATION,融资交易仅CAPITAL_INCREASE一类,观察窗始于2020年；2016年设立至报告期初的股本变化未逐笔披露，按可核验下限解释。,申报稿正文第33—40、119—120页；正式版上交所链接交叉核验,Week11_688726_v1.1
+688726,拉普拉斯,CV024,股权转让交易数,二级股权流动,A核心,笔,32,VALID_WITH_LIMITATION,COUNT(EQUITY_TRANSFER transactions),观察窗始于2020年；2016年设立至报告期初的股本变化未逐笔披露，按可核验下限解释。,申报稿正文第33—40、119—120页；正式版上交所链接交叉核验,Week11_688726_v1.1
+688726,拉普拉斯,CV025,可核验股权转让对价下限,二级股权流动,A核心,万元人民币,44483.391800000005,VALID_WITH_LIMITATION,SUM(32笔可核验转让对价),观察窗始于2020年；2016年设立至报告期初的股本变化未逐笔披露，按可核验下限解释。,申报稿正文第33—40、119—120页；正式版上交所链接交叉核验,Week11_688726_v1.1
+688726,拉普拉斯,CV026,转让对价与融资金额比,二级股权流动,B扩展,0–∞,0.2656643136818289,VALID_WITH_LIMITATION,CV025/CV003,观察窗始于2020年；2016年设立至报告期初的股本变化未逐笔披露，按可核验下限解释。,申报稿正文第33—40、119—120页；正式版上交所链接交叉核验,Week11_688726_v1.1
+688726,拉普拉斯,CV027,金额已知融资轮数,数据可用性,Q质量,轮,11,VALID_WITH_LIMITATION,已知金额融资轮数,观察窗始于2020年；2016年设立至报告期初的股本变化未逐笔披露，按可核验下限解释。,申报稿正文第33—40、119—120页；正式版上交所链接交叉核验,Week11_688726_v1.1
+688726,拉普拉斯,CV028,融资轮金额覆盖率,数据可用性,Q质量,0–1,1.0,VALID_WITH_LIMITATION,CV027/CV002,观察窗始于2020年；2016年设立至报告期初的股本变化未逐笔披露，按可核验下限解释。,申报稿正文第33—40、119—120页；正式版上交所链接交叉核验,Week11_688726_v1.1
+688726,拉普拉斯,CV029,融资轮日期覆盖率,数据可用性,Q质量,0–1,1.0,VALID_WITH_LIMITATION,MONTH精度轮数/CV002,观察窗始于2020年；2016年设立至报告期初的股本变化未逐笔披露，按可核验下限解释。,申报稿正文第33—40、119—120页；正式版上交所链接交叉核验,Week11_688726_v1.1
+688726,拉普拉斯,CV030,计算型轮次金额占比,数值来源结构,Q质量,0–1,0.6363636363636364,VALID_WITH_LIMITATION,多投资人求和计算型金额轮数/CV027,观察窗始于2020年；2016年设立至报告期初的股本变化未逐笔披露，按可核验下限解释。,申报稿正文第33—40、119—120页；正式版上交所链接交叉核验,Week11_688726_v1.1
+688726,拉普拉斯,CV031,每轮融资证据记录数,证据密度,Q质量,条/轮,1.0,VALID_WITH_LIMITATION,融资轮直接关联证据11条/CV002,证据记录密度不是披露质量评分；早期观察窗仍存在缺口。,申报稿正文第33—40、119—120页；正式版上交所链接交叉核验,Week11_688726_v1.1
+688726,拉普拉斯,CV032,公司级披露限制标记,披露边界,Q质量,0/1,1,VALID,disclosure_limitation非空，因此为1,1表示存在公司级披露限制。,申报稿正文第33—40、119—120页；正式版上交所链接交叉核验,Week11_688726_v1.1

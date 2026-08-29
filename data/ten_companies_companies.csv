@@ -1,0 +1,11 @@
+﻿company_id,source_stock_code,company_name_standard,prospectus_name,financing_round_count,financing_amount_lower_bound_10k_cny,financing_amount_status,equity_transfer_amount_lower_bound_10k_cny,equity_transfer_amount_status,unique_direct_legal_entity_count,confirmed_pevc_legal_entity_count,disclosure_limitation,main_evidence_reference,company_review_status
+301563,301563,云汉芯城,301563_云汉芯城_IPO招股说明书.pdf,7,27120,KNOWN_LOWER_BOUND,13018.1954,KNOWN_LOWER_BOUND,35,12,融资金额和转让金额均存在未披露组成部分,PDF第56—65页/正文第55—64页；投资关系PDF第82—91页,FINAL_APPROVED
+001282,1282,三联锻造,,1,1566,DISCLOSED_COMPLETE,,NOT_APPLICABLE,1,0,部分历史事项为聚合披露，不强行拆分,PDF第35页/正文第34页；股份支付PDF第39页/正文第38页,FINAL_APPROVED
+301581,301581,黄山谷捷,,2,13655.098274,DISCLOSED_COMPLETE,0,DISCLOSED_COMPLETE,6,0,,PDF第42—45页/正文第41—44页,FINAL_APPROVED
+603418,603418,友升股份,,2,48500,DISCLOSED_COMPLETE,,NOT_APPLICABLE,13,2,,融资PDF第44—46页；基金性质PDF第70—73页；一致行动关系PDF第81页,FINAL_APPROVED
+688758,688758,赛分科技,,3,74000,DISCLOSED_COMPLETE,3000,DISCLOSED_COMPLETE,17,0,,PDF第55—60页/正文第54—59页,FINAL_APPROVED
+688775,688775,影石创新,,0,,HISTORICAL_NOT_RECONSTRUCTIBLE,1462.7126,KNOWN_LOWER_BOUND,1,0,早期融资轮次未逐轮披露,PDF第62—65页/正文第62—65页,FINAL_APPROVED
+920100,920100,三协电机,,2,4097.49,DISCLOSED_COMPLETE,,NOT_APPLICABLE,17,2,,PDF第31—32、39、250、325—326、359页,FINAL_APPROVED
+920116,920116,星图测控,,1,4725,DISCLOSED_COMPLETE,,NOT_APPLICABLE,3,0,,PDF第35—36页/正文第35—36页,FINAL_APPROVED
+301606,301606,绿联科技,301606_ugreen_ipo_prospectus_20240719.pdf,5,32838.569999,DISCLOSED_COMPLETE,30000,DISCLOSED_COMPLETE,11,2,,PDF第49—55、77、80—85页/正文第48—54、76、79—84页,FINAL_APPROVED
+688726,688726,拉普拉斯,688726_laplace_ipo_application_20230619.pdf,11,167442.1046,KNOWN_LOWER_BOUND,44483.391800000005,KNOWN_LOWER_BOUND,77,29,招股书逐笔股本变动表仅覆盖报告期（2020—2022年）；公司2016年设立资本500万元，报告期初资本为528.7089万元，二者之间的28.7089万元变化及可能相关交易未逐笔披露。因此11轮融资、融资金额和直接主体数均按可核验观察窗解释为下限。,申报稿正文第33—40、119—120页；正式版上交所链接交叉核验,ACCEPTED_LIMITATION
